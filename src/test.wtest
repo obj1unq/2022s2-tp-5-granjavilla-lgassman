@@ -10,19 +10,18 @@ describe "granjaville"{
 		game.addVisual(hector)
 	}
 	
+	
 	test "sembrar" {
 	
-		hector.position(game.center())
-		const maiz = new Maiz(position=game.at(1,1))
 		hector.sembrar(maiz)
-		hector.position(game.at(0,0))
-		assert.equals(game.center(), maiz.position())
+		const colliders = game.colliders(hector)
+		assert.equals(1, colliders.size())
 	
 	}
 	
 	test "ocupado" {
-		hector.sembrar(new Maiz())
-		assert.throwsException({hector.sembrar(new Maiz())})
+		hector.sembrar(maiz)
+		assert.throwsException({hector.sembrar(maiz)})
 	}
 
 }

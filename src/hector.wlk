@@ -5,8 +5,9 @@ object hector {
 	const property image = "player.png"
 	
 	
-	method sembrar(cultivo) {
+	method sembrar(tipoCultivo) {
 		self.validarSembrar()
+		const cultivo = tipoCultivo.nuevo()
 		cultivo.position(position)
 		game.addVisual(cultivo)
 	}

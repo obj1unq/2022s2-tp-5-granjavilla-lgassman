@@ -11,9 +11,9 @@ program farmville {
 
 	//  VISUALES
  	game.addVisualCharacter(hector)
-	keyboard.m().onPressDo({hector.sembrar(new Maiz())})
-	keyboard.t().onPressDo({hector.sembrar(new Trigo())})
-	keyboard.o().onPressDo({hector.sembrar(new Tomaco())})
+	keyboard.m().onPressDo({hector.sembrar(maiz)})
+	keyboard.t().onPressDo({hector.sembrar(trigo)})
+	keyboard.o().onPressDo({hector.sembrar(tomaco)})
 	 	
  	
  	//  COMIENZA
