@@ -13,10 +13,9 @@ describe "granjaville"{
 	test "sembrar" {
 	
 		hector.position(game.center())
-		const maiz = new Maiz(position=game.at(1,1))
-		hector.sembrar(maiz)
-		hector.position(game.at(0,0))
-		assert.equals(game.center(), maiz.position())
+		hector.sembrarMaiz()
+		const colliders = game.colliders(hector)
+		assert.equals(1, colliders.size())
 	
 	}
 	

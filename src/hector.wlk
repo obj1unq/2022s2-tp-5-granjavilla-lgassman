@@ -1,8 +1,19 @@
 import wollok.game.*
+import cultivos.*
 
 object hector {
 	var property position = game.center()
 	const property image = "player.png"
+	
+	method sembrarTrigo() {
+		self.sembrar(new Trigo())
+	}
+	method sembrarMaiz() {
+		self.sembrar(new Maiz())
+	}
+	method sembrarTomaco() {
+		self.sembrar(new Tomaco())
+	}
 	
 	
 	method sembrar(cultivo) {
