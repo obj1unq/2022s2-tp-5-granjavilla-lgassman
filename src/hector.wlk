@@ -19,7 +19,7 @@ object hector {
 		}
 	}
 	
-	method regar() {
+	method regarCultivo() {
 		self.cultivoActual().regar()
 	}
 	
@@ -63,5 +63,9 @@ object hector {
 		return cosechados.sum({cultivo => cultivo.precio()})
 	}
 	
+	method regar() {
+		//nada
+	}
+		
 	
 }

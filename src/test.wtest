@@ -91,7 +91,7 @@ describe "granjaville"{
 		hector.sembrar(tomaco)
 		hector.cosechar()
 		hector.sembrar(maiz)
-		hector.regar()
+		hector.regarCultivo()
 		hector.cosechar()
 		
 		assert.equals(0, hector.monedas())				
@@ -102,13 +102,13 @@ describe "granjaville"{
 		
 		
 		hector.sembrar(trigo)
-		hector.regar()
-		hector.regar()
+		hector.regarCultivo()
+		hector.regarCultivo()
 		hector.cosechar()
 		hector.sembrar(trigo)
-		hector.regar()
-		hector.regar()
-		hector.regar()
+		hector.regarCultivo()
+		hector.regarCultivo()
+		hector.regarCultivo()
 		hector.cosechar()
 
 		hector.vender()
