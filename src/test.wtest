@@ -61,4 +61,35 @@ describe "granjaville"{
 		assert.equals(game.at(3,0), cultivo.position())
 		
 	}
+	
+	test "maiz listo" {
+		const _maiz = new Maiz()
+		assert.notThat(_maiz.listo())
+		_maiz.regar()
+		assert.that(_maiz.listo())		
+	}
+
+	test "trigo trigo" {
+		const _trigo = new Trigo()
+		assert.notThat(_trigo.listo())
+		_trigo.regar()
+		assert.notThat(_trigo.listo())
+		_trigo.regar()
+		assert.that(_trigo.listo())
+		_trigo.regar()
+		assert.that(_trigo.listo())		
+	}
+	
+	test "cosechar" {
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		assert.equals(2, hector.cosechados().size())				
+		
+	}
+
+	
+	
+	
 }

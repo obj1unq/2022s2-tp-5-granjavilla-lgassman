@@ -25,11 +25,19 @@ object adulto {
 	method sufijo() {
 		return "adult"
 	}
+	
+	method listoParaCosecha() {
+		return true
+	}
 }
 
 object bebe {
 	method sufijo() {
 		return "baby"
+	}
+	
+	method listoParaCosecha() {
+		return false
 	}
 }
 
@@ -43,6 +51,10 @@ class Maiz {
 	}
 	method image() {
 		return "corn_" + crecimiento.sufijo() + ".png" 
+	}
+	
+	method listo() {
+		return crecimiento.listoParaCosecha()
 	}
 }
 
@@ -59,6 +71,10 @@ class Trigo {
 		etapa = (etapa + 1) % etapaMaxima
 	}
 	
+	method listo() {
+		return etapa >=2
+	}
+	
 }
 
 class Tomaco {
@@ -73,6 +89,10 @@ class Tomaco {
 			//no usar else si no queria moverse
 			position = game.at(position.x(), 0)
 		}	
+	}
+	
+	method listo() {
+		return true
 	}
 	
 	method estaArriba() {

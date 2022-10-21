@@ -3,7 +3,7 @@ import wollok.game.*
 object hector {
 	var property position = game.center()
 	const property image = "player.png"
-	
+	const property cosechados = #{}
 	
 	method sembrar(tipoCultivo) {
 		self.validarSembrar()
@@ -19,13 +19,30 @@ object hector {
 	}
 	
 	method regar() {
-		self.validarRegar()
-		game.colliders(self).first().regar()
+		self.cultivoActual().regar()
 	}
 	
-	method validarRegar() { //Este validar es solamente para que el mensaje sea bonito
+	method cultivoActual() {
+		self.validarCultivo()
+		return game.colliders(self).first()
+	}
+	
+	method validarCultivo() { //Este validar es solamente para que el mensaje sea bonito
 		if (game.colliders(self).isEmpty()) {
-			self.error("Nada que regar!")
+			self.error("No hay cultivo!")
 		}		
 	}
+	method cosechar() {
+		const cultivo = self.cultivoActual()
+		self.validarCosecha(cultivo)
+		cosechados.add(cultivo)
+		game.removeVisual(cultivo)
+	}
+	
+	method validarCosecha(cultivo) {
+		if (not cultivo.listo()) {
+			self.error("no esta listo para cosechar")
+		}
+	}
+	
 }
