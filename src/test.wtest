@@ -34,4 +34,19 @@ describe "granjaville"{
 		
 	}
 
+	test "regar trigo" {
+		const _trigo = new Trigo()
+		assert.equals("wheat_0.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_1.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_2.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_3.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_0.png", _trigo.image())
+		_trigo.regar()
+		
+	}
+
 }

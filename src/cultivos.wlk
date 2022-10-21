@@ -48,7 +48,16 @@ class Maiz {
 
 class Trigo {
 	var property position = game.at(0,0)
-	const property image = "wheat_0.png"
+	var etapa = 0
+	const etapaMaxima = 4
+	
+	method image() {
+		return "wheat_" + etapa + ".png"
+	}
+	
+	method regar() {
+		etapa = (etapa + 1) % etapaMaxima
+	}
 	
 }
 
