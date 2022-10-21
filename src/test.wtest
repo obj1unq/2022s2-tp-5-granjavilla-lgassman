@@ -1,0 +1,28 @@
+import hector.*
+import cultivos.*
+import wollok.game.*
+
+
+describe "granjaville"{
+
+	method initialize() {
+		game.clear()
+		game.addVisual(hector)
+	}
+	
+	test "sembrar" {
+	
+		hector.position(game.center())
+		const maiz = new Maiz(position=game.at(1,1))
+		hector.sembrar(maiz)
+		hector.position(game.at(0,0))
+		assert.equals(game.center(), maiz.position())
+	
+	}
+	
+	test "ocupado" {
+		hector.sembrar(new Maiz())
+		assert.throwsException({hector.sembrar(new Maiz())})
+	}
+
+}
