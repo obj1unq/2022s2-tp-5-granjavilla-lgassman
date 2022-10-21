@@ -65,4 +65,18 @@ class Tomaco {
 	var property position = game.at(0,0)
 	const property image = "tomaco.png"
 	
+	
+	method regar() {
+		if (not self.estaArriba())
+			position = position.up(1)
+		else {
+			//no usar else si no queria moverse
+			position = game.at(position.x(), 0)
+		}	
+	}
+	
+	method estaArriba() {
+		return position.y() == game.height() - 1
+	}
+	
 }

@@ -49,4 +49,16 @@ describe "granjaville"{
 		
 	}
 
+	test "regar tomaco" {
+		game.height(3)
+		const cultivo = new Tomaco(position=game.at(3,0))
+		assert.equals(game.at(3,0), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,1), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,2), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,0), cultivo.position())
+		
+	}
 }
