@@ -29,6 +29,7 @@ object adulto {
 	method listoParaCosecha() {
 		return true
 	}
+	
 }
 
 object bebe {
@@ -56,6 +57,10 @@ class Maiz {
 	method listo() {
 		return crecimiento.listoParaCosecha()
 	}
+	
+	method precio() {
+		return 150
+	}
 }
 
 class Trigo {
@@ -73,6 +78,10 @@ class Trigo {
 	
 	method listo() {
 		return etapa >=2
+	}
+	
+	method precio() {
+		return (etapa -1 ) * 100 
 	}
 	
 }
@@ -97,6 +106,10 @@ class Tomaco {
 	
 	method estaArriba() {
 		return position.y() == game.height() - 1
+	}
+	
+	method precio() {
+		return 80
 	}
 	
 }

@@ -46,7 +46,6 @@ describe "granjaville"{
 		_trigo.regar()
 		assert.equals("wheat_0.png", _trigo.image())
 		_trigo.regar()
-		
 	}
 
 	test "regar tomaco" {
@@ -86,9 +85,40 @@ describe "granjaville"{
 		hector.sembrar(tomaco)
 		hector.cosechar()
 		assert.equals(2, hector.cosechados().size())				
-		
 	}
 
+	test "vender" {
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		hector.sembrar(maiz)
+		hector.regar()
+		hector.cosechar()
+		
+		assert.equals(0, hector.monedas())				
+		assert.equals(2, hector.cosechados().size())				
+		hector.vender()
+		assert.equals(230, hector.monedas())				
+		assert.that(hector.cosechados().isEmpty())				
+		
+		
+		hector.sembrar(trigo)
+		hector.regar()
+		hector.regar()
+		hector.cosechar()
+		hector.sembrar(trigo)
+		hector.regar()
+		hector.regar()
+		hector.regar()
+		hector.cosechar()
+
+		hector.vender()
+		assert.equals(530, hector.monedas())				
+		assert.that(hector.cosechados().isEmpty())				
+		
+		hector.vender() //podría romper también
+		assert.equals(530, hector.monedas())				
+		
+	}
 	
 	
 	

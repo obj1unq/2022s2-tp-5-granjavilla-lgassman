@@ -4,6 +4,7 @@ object hector {
 	var property position = game.center()
 	const property image = "player.png"
 	const property cosechados = #{}
+	var property monedas = 0
 	
 	method sembrar(tipoCultivo) {
 		self.validarSembrar()
@@ -44,5 +45,23 @@ object hector {
 			self.error("no esta listo para cosechar")
 		}
 	}
+	
+	method decirPertenecias() {
+		game.say(self, self.pertenecias())
+	}
+	
+	method pertenecias() {
+		return "mis monedas son " + monedas + " y tengo " + cosechados.size() + " para vender"
+	}
+	
+	method vender() {
+		monedas += self.valorCosecha()
+		cosechados.clear()
+	}
+	
+	method valorCosecha() {
+		return cosechados.sum({cultivo => cultivo.precio()})
+	}
+	
 	
 }
