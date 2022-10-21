@@ -23,5 +23,15 @@ describe "granjaville"{
 		hector.sembrar(maiz)
 		assert.throwsException({hector.sembrar(maiz)})
 	}
+	
+	test "regar maiz" {
+		const _maiz = new Maiz()
+		assert.equals("corn_baby.png", _maiz.image())
+		_maiz.regar()
+		assert.equals("corn_adult.png", _maiz.image())
+		_maiz.regar()
+		assert.equals("corn_adult.png", _maiz.image())
+		
+	}
 
 }

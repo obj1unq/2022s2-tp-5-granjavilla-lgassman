@@ -21,9 +21,29 @@ object tomaco {
 }
 
 
+object adulto {
+	method sufijo() {
+		return "adult"
+	}
+}
+
+object bebe {
+	method sufijo() {
+		return "baby"
+	}
+}
+
 class Maiz {
 	var property position = game.at(0,0)
 	const property image = "corn_baby.png"
+	var crecimiento = bebe
+	
+	method regar() {
+		crecimiento = adulto
+	}
+	method image() {
+		return "corn_" + crecimiento.sufijo() + ".png" 
+	}
 }
 
 class Trigo {

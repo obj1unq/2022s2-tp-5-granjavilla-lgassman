@@ -17,4 +17,15 @@ object hector {
 			self.error("Espacio ocupado!")
 		}
 	}
+	
+	method regar() {
+		self.validarRegar()
+		game.colliders(self).first().regar()
+	}
+	
+	method validarRegar() { //Este validar es solamente para que el mensaje sea bonito
+		if (game.colliders(self).isEmpty()) {
+			self.error("Nada que regar!")
+		}		
+	}
 }
