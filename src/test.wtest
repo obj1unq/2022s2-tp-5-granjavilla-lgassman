@@ -1,0 +1,125 @@
+import hector.*
+import cultivos.*
+import wollok.game.*
+
+
+describe "granjaville"{
+
+	method initialize() {
+		game.clear()
+		game.addVisual(hector)
+	}
+	
+	
+	test "sembrar" {
+	
+		hector.sembrar(maiz)
+		const colliders = game.colliders(hector)
+		assert.equals(1, colliders.size())
+	
+	}
+	
+	test "ocupado" {
+		hector.sembrar(maiz)
+		assert.throwsException({hector.sembrar(maiz)})
+	}
+	
+	test "regar maiz" {
+		const _maiz = new Maiz()
+		assert.equals("corn_baby.png", _maiz.image())
+		_maiz.regar()
+		assert.equals("corn_adult.png", _maiz.image())
+		_maiz.regar()
+		assert.equals("corn_adult.png", _maiz.image())
+		
+	}
+
+	test "regar trigo" {
+		const _trigo = new Trigo()
+		assert.equals("wheat_0.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_1.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_2.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_3.png", _trigo.image())
+		_trigo.regar()
+		assert.equals("wheat_0.png", _trigo.image())
+		_trigo.regar()
+	}
+
+	test "regar tomaco" {
+		game.height(3)
+		const cultivo = new Tomaco(position=game.at(3,0))
+		assert.equals(game.at(3,0), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,1), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,2), cultivo.position())
+		cultivo.regar()
+		assert.equals(game.at(3,0), cultivo.position())
+		
+	}
+	
+	test "maiz listo" {
+		const _maiz = new Maiz()
+		assert.notThat(_maiz.listo())
+		_maiz.regar()
+		assert.that(_maiz.listo())		
+	}
+
+	test "trigo trigo" {
+		const _trigo = new Trigo()
+		assert.notThat(_trigo.listo())
+		_trigo.regar()
+		assert.notThat(_trigo.listo())
+		_trigo.regar()
+		assert.that(_trigo.listo())
+		_trigo.regar()
+		assert.that(_trigo.listo())		
+	}
+	
+	test "cosechar" {
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		assert.equals(2, hector.cosechados().size())				
+	}
+
+	test "vender" {
+		hector.sembrar(tomaco)
+		hector.cosechar()
+		hector.sembrar(maiz)
+		hector.regarCultivo()
+		hector.cosechar()
+		
+		assert.equals(0, hector.monedas())				
+		assert.equals(2, hector.cosechados().size())				
+		hector.vender()
+		assert.equals(230, hector.monedas())				
+		assert.that(hector.cosechados().isEmpty())				
+		
+		
+		hector.sembrar(trigo)
+		hector.regarCultivo()
+		hector.regarCultivo()
+		hector.cosechar()
+		hector.sembrar(trigo)
+		hector.regarCultivo()
+		hector.regarCultivo()
+		hector.regarCultivo()
+		hector.cosechar()
+
+		hector.vender()
+		assert.equals(530, hector.monedas())				
+		assert.that(hector.cosechados().isEmpty())				
+		
+		hector.vender() //podría romper también
+		assert.equals(530, hector.monedas())				
+		
+	}
+	
+	
+	
+}

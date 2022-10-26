@@ -1,6 +1,7 @@
 import wollok.game.*
 import hector.*
 import cultivos.*
+import aspersores.*
 
 program farmville {
 	//  CONFIG	
@@ -11,7 +12,20 @@ program farmville {
 
 	//  VISUALES
  	game.addVisualCharacter(hector)
- 	game.addVisual(new Maiz()) // Se agrega a modo de prueba
+	keyboard.m().onPressDo({hector.sembrar(maiz)})
+	keyboard.t().onPressDo({hector.sembrar(trigo)})
+	keyboard.o().onPressDo({hector.sembrar(tomaco)})
+	 	
+	keyboard.r().onPressDo({hector.regarCultivo()})
+	keyboard.c().onPressDo({hector.cosechar()})
+	
+	keyboard.space().onPressDo({hector.decirPertenecias()})
+	keyboard.v().onPressDo({hector.vender()})
+	
+	keyboard.a().onPressDo({aspersores.agregarNuevo(hector.position())})
+	
+	game.onTick(1000, "ASPERSORES", {aspersores.tirarAgua()})
+
  	
  	//  COMIENZA
 	game.start()
